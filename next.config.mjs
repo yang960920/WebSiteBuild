@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 개발 및 빌드 환경을 위한 설정
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        // Vercel Blob CDN 도메인
+        protocol: "https",
+        hostname: "**.public.blob.vercel-storage.com",
+      },
+    ],
+  },
 }
 
 export default nextConfig;
+
