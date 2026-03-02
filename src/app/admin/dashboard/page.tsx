@@ -24,9 +24,13 @@ export default function AdminDashboard() {
         try {
             const res = await fetch("/api/portfolio")
             const data = await res.json()
+            if (!res.ok || !Array.isArray(data)) {
+                throw new Error(data?.error || "서버 오류가 발생했습니다.")
+            }
             setPortfolios(data)
-        } catch {
-            setMessage({ type: "error", text: "포트폴리오 목록을 불러오지 못했습니다." })
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : "포트폴리오 목록을 불러오지 못했습니다."
+            setMessage({ type: "error", text: msg })
         } finally {
             setLoading(false)
         }
