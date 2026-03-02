@@ -1,0 +1,5 @@
+# Replace Navbar Logo
+
+- [/] Upload/Move the provided image to the `public/` directory
+- [ ] Update `src/components/Header.tsx` to use the Image component for the logo
+- [ ] Adjust styling for proper logo display

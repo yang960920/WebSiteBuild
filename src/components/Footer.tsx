@@ -1,6 +1,6 @@
 // [Footer] 사업자 정보 및 하단 정책 링크 담당
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
@@ -10,8 +10,14 @@ export default function Footer() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                     {/* Logo & Info */}
                     <div className="md:col-span-1">
-                        <Link href="/" className="text-xl font-bold tracking-tight">
-                            WebBuild<span className="text-primary">.Pro</span>
+                        <Link href="/" className="inline-block">
+                            <Image
+                                src="/im-logo.png"
+                                alt="이음웹스튜디오 Logo"
+                                width={160}
+                                height={40}
+                                className="h-10 w-auto object-contain"
+                            />
                         </Link>
                         <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                             안정적이고 확장 가능한 웹사이트를 구축합니다.
@@ -49,17 +55,17 @@ export default function Footer() {
                             사업자 정보
                         </h3>
                         <ul className="mt-4 text-sm text-gray-500 dark:text-gray-400 space-y-2">
-                            <li>상호명 : (주)웹빌드프로</li>
-                            <li>대표명 : 아무개</li>
+                            <li>상호명 : 이음웹스튜디오</li>
+                            <li>대표명 : 양현준</li>
                             <li>사업자등록번호 : 000-00-00000</li>
-                            <li>주소 : 서울특별시 강남구 테헤란로 00, 00층</li>
-                            <li>이메일 : contact@example.com</li>
+                            <li>주소 : 인천 남동구 운연천로 9 </li>
+                            <li>이메일 : iumwebstudio@gmail.com</li>
                         </ul>
                     </div>
                 </div>
 
                 <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
-                    <p>&copy; {currentYear} WebBuild.Pro. All rights reserved.</p>
+                    <p>&copy; {currentYear} 이음웹스튜디오. All rights reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" className="hover:text-primary transition-colors">개인정보처리방침</Link>
                         <Link href="/terms" className="hover:text-primary transition-colors">이용약관</Link>
