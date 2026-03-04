@@ -149,9 +149,18 @@ export default function PortfolioEditInner() {
         setLoading(true)
         setMessage(null)
 
+        const trimmedSlug = form.slug.trim();
+        const trimmedTitle = form.title.trim();
+
+        if (!trimmedSlug || !trimmedTitle) {
+            setMessage({ type: "error", text: "Slug와 제목은 필수 입력 항목입니다." })
+            setLoading(false)
+            return
+        }
+
         const payload = {
-            slug: form.slug.trim(),
-            title: form.title.trim(),
+            slug: trimmedSlug,
+            title: trimmedTitle,
             summary: form.summary.trim(),
             tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
             role: form.role.trim(),

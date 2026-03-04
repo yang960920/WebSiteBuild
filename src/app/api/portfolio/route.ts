@@ -16,6 +16,11 @@ export async function POST(req: NextRequest) {
     try {
         await initDb()
         const body = await req.json()
+
+        if (!body.slug || body.slug.trim() === "") {
+            return NextResponse.json({ error: "Slug is required" }, { status: 400 })
+        }
+
         const portfolio = await createPortfolio(body)
         return NextResponse.json(portfolio, { status: 201 })
     } catch (error) {
