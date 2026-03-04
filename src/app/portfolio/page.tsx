@@ -2,16 +2,18 @@
 import { Metadata } from "next";
 import PortfolioCard from "@/components/PortfolioCard";
 import CTASection from "@/components/CTASection";
-import portfolioData from "@/data/portfolio.json";
+import { getAllPortfolios, initDb } from "@/lib/db";
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: "포트폴리오 | 성공 사례",
     description: "웹사이트 구축 전문가가 작업한 다양한 포트폴리오와 성공 사례를 확인하세요.",
 };
 
-export default function PortfolioPage() {
-    // 실제 프로젝트에서는 여기서 카테고리/태그 필터링 로직 추가 가능
-    const portfolios = portfolioData;
+export default async function PortfolioPage() {
+    await initDb();
+    const portfolios = await getAllPortfolios();
 
     return (
         <div className="bg-gray-50 dark:bg-gray-950 pt-16 sm:pt-24 pb-0">

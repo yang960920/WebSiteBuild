@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
-import portfolioData from "@/data/portfolio.json";
+import { getPortfolioBySlug, getAllPortfolios, initDb } from "@/lib/db";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 
 interface Props {
@@ -12,8 +12,9 @@ interface Props {
 }
 
 // 동적 파라미터 기반 메타데이터 생성
-export function generateMetadata({ params }: Props): Metadata {
-    const portfolio = portfolioData.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    await initDb();
+    const portfolio = await getPortfolioBySlug(params.slug);
     if (!portfolio) {
         return { title: "포트폴리오를 찾을 수 없습니다" };
     }
@@ -23,15 +24,12 @@ export function generateMetadata({ params }: Props): Metadata {
     };
 }
 
-// 정적 경로 생성 (SSG)
-export function generateStaticParams() {
-    return portfolioData.map((p) => ({
-        slug: p.slug,
-    }));
-}
+// 동적 렌더링 (DB 데이터 실시간 반영)
+export const dynamic = 'force-dynamic';
 
-export default function PortfolioDetailPage({ params }: Props) {
-    const portfolio = portfolioData.find((p) => p.slug === params.slug);
+export default async function PortfolioDetailPage({ params }: Props) {
+    await initDb();
+    const portfolio = await getPortfolioBySlug(params.slug);
 
     if (!portfolio) {
         notFound();

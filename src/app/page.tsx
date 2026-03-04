@@ -4,9 +4,13 @@ import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import PortfolioCard from "@/components/PortfolioCard";
 import FAQAccordion from "@/components/FAQAccordion";
-import portfolioData from "@/data/portfolio.json";
+import { getAllPortfolios, initDb } from "@/lib/db";
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+    await initDb();
+    const portfolioData = await getAllPortfolios();
     const recentPortfolios = portfolioData.slice(0, 3);
 
     const faqs = [
