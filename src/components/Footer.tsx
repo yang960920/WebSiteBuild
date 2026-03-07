@@ -57,7 +57,7 @@ export default function Footer() {
                         <ul className="mt-4 text-sm text-gray-500 dark:text-gray-400 space-y-2">
                             <li>상호명 : 이음웹스튜디오</li>
                             <li>대표명 : 양현준</li>
-                            <li>사업자등록번호 : 000-00-00000</li>
+                            <li>사업자등록번호 : 422-34-01766</li>
                             <li>주소 : 인천 남동구 운연천로 9 </li>
                             <li>이메일 : iumwebstudio@gmail.com</li>
                         </ul>

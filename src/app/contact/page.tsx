@@ -43,8 +43,8 @@ export default function ContactPage() {
                                     <Mail className="h-7 w-6 text-gray-400" aria-hidden="true" />
                                 </dt>
                                 <dd>
-                                    <a className="hover:text-gray-900 dark:hover:text-white" href="mailto:contact@example.com">
-                                        contact@example.com
+                                    <a className="hover:text-gray-900 dark:hover:text-white" href="mailto:iumwebstudio@gmail.com">
+                                        iumwebstudio@gmail.com
                                     </a>
                                     <p className="text-sm mt-1 text-gray-500">24시간 상시 접수</p>
                                 </dd>
