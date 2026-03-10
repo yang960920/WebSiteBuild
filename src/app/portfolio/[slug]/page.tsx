@@ -106,7 +106,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                         기존의 문제 및 요구사항
                     </h2>
                     <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-400">
-                        <p>{portfolio.problem}</p>
+                        <p className="whitespace-pre-line">{portfolio.problem}</p>
                     </div>
                 </section>
 
@@ -117,7 +117,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                         해결 과정 및 솔루션
                     </h2>
                     <div className="bg-primary/5 rounded-2xl p-6 md:p-8 dark:bg-primary/10 border border-primary/10">
-                        <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
+                        <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed font-medium whitespace-pre-line">
                             {portfolio.solution}
                         </p>
                     </div>
@@ -131,7 +131,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     </h2>
                     <div className="flex items-start bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
                         <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 flex-shrink-0 mt-0.5" />
-                        <p className="text-lg text-gray-800 dark:text-gray-200 font-semibold leading-relaxed">
+                        <p className="text-lg text-gray-800 dark:text-gray-200 font-semibold leading-relaxed whitespace-pre-line">
                             {portfolio.result}
                         </p>
                     </div>
