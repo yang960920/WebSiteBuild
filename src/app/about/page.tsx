@@ -42,10 +42,13 @@ export default function AboutPage() {
                 <section className="mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                         <div className="relative aspect-square sm:aspect-auto sm:h-[600px] w-full max-w-md md:max-w-none mx-auto overflow-hidden rounded-3xl bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-                            {/* 프로필 이미지 플레이스홀더 */}
-                            <div className="absolute inset-x-0 bottom-0 top-0 flex items-center justify-center bg-gray-200 dark:bg-gray-800">
-                                <span className="text-gray-400 dark:text-gray-600 font-medium">프로필 사진 영역</span>
-                            </div>
+                            <Image
+                                src="/profile.jpg"
+                                alt="프로필 사진"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
                         </div>
 
                         <div className="lg:pl-8 xl:pl-16">
