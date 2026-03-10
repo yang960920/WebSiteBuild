@@ -7,16 +7,44 @@ import Link from "next/link";
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // TODO: 실제 폼 전송 로직 연동 (현재는 UI만 제공)
-        setTimeout(() => {
-            setIsSubmitting(false);
+        setErrorMessage("");
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            budget: formData.get("budget"),
+            deadline: formData.get("deadline"),
+            message: formData.get("message"),
+        };
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            if (!res.ok) {
+                const result = await res.json();
+                throw new Error(result.error || "전송에 실패했습니다.");
+            }
+
             setIsSuccess(true);
             (e.target as HTMLFormElement).reset();
-        }, 1500);
+        } catch (err) {
+            setErrorMessage(
+                err instanceof Error ? err.message : "전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -166,6 +194,12 @@ export default function ContactForm() {
                             </label>
                         </div>
                     </div>
+
+                    {errorMessage && (
+                        <div className="rounded-md bg-red-50 dark:bg-red-950 p-4">
+                            <p className="text-sm text-red-700 dark:text-red-400">{errorMessage}</p>
+                        </div>
+                    )}
 
                     <div className="pt-4">
                         <button
