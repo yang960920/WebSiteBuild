@@ -55,7 +55,7 @@ export default function ContactPage() {
                                     <MessageCircle className="h-7 w-6 text-gray-400" aria-hidden="true" />
                                 </dt>
                                 <dd>
-                                    <a className="hover:text-gray-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+                                    <a className="hover:text-gray-900 dark:hover:text-white" href="https://open.kakao.com/o/sT9kKJki" target="_blank" rel="noreferrer">
                                         카카오톡 오픈채팅 상담
                                     </a>
                                     <p className="text-sm mt-1 text-gray-500">평일 10:00 - 18:00</p>
@@ -67,8 +67,7 @@ export default function ContactPage() {
                                     <MapPin className="h-7 w-6 text-gray-400" aria-hidden="true" />
                                 </dt>
                                 <dd>
-                                    서울특별시 강남구 테헤란로 00, 00층
-                                    <p className="text-sm mt-1 text-gray-500">방문 미팅은 사전 예약 필수</p>
+                                    방문 미팅은 사전 예약 필수
                                 </dd>
                             </div>
                         </dl>
