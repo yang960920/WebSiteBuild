@@ -1,4 +1,5 @@
 import { sql } from "@vercel/postgres"
+import { unstable_noStore as noStore } from "next/cache"
 
 export async function initDb() {
     await sql`
@@ -38,11 +39,13 @@ export type Portfolio = {
 }
 
 export async function getAllPortfolios(): Promise<Portfolio[]> {
+    noStore()
     const { rows } = await sql`SELECT * FROM portfolios ORDER BY created_at DESC`
     return rows as Portfolio[]
 }
 
 export async function getPortfolioBySlug(slug: string): Promise<Portfolio | null> {
+    noStore()
     const { rows } = await sql`SELECT * FROM portfolios WHERE slug = ${slug} LIMIT 1`
     return (rows[0] as Portfolio) || null
 }
