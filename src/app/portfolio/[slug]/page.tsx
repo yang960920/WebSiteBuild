@@ -6,6 +6,7 @@ import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import { getPortfolioBySlug, getAllPortfolios, initDb } from "@/lib/db";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import ImageGallery from "@/components/ImageGallery";
 
 interface Props {
     params: { slug: string };
@@ -122,6 +123,9 @@ export default async function PortfolioDetailPage({ params }: Props) {
                         </p>
                     </div>
                 </section>
+
+                {/* 상세 이미지 갤러리 */}
+                <ImageGallery images={portfolio.images} title={portfolio.title} />
 
                 {/* 결과/성과 */}
                 <section className="mb-16">
